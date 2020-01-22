@@ -8,7 +8,11 @@ function checkGameOver() {
 
 }
 
-function createGame() {
+function handleGameOver(){
+    showAllMines(gBoard);
+}
+
+function createGameObj() {
     var game = {
         isOn: false,
         showCount: 0,
@@ -19,7 +23,7 @@ function createGame() {
     return game;
 }
 
-function createLevels() {
+function createLevelsObj() {
     var levels = {
         Beginner: { size: 4, mines: 2 },
         Medium: { size: 8, mines: 12 },
@@ -30,9 +34,13 @@ function createLevels() {
 }
 
 function initGame() {
-    gGame = createGame();
-    gLevels = createLevels();
+    gLevels = createLevelsObj();
     gGameCurLevel = gLevels.Beginner;
+    createGame(gGameCurLevel);
+}
+
+function createGame(level) {
+    gGame = createGameObj();
     gBoard = buildBoard(gGameCurLevel);
     setMinesNegsCount(gBoard);
     renderBoard(gBoard);
