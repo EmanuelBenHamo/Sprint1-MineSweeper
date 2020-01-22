@@ -9,7 +9,6 @@ var gBoard;
 
 function expandShown(board, i, j) {
     if (shouldExpandAllAround(board, i, j)) {
-        console.log('should expand all around');
         for (var iIndex = i - 1; iIndex <= i + 1; iIndex++) {
             for (var jIndex = j - 1; jIndex <= j + 1; jIndex++) {
                 if (isValidCell(board, iIndex, jIndex)) {
@@ -22,7 +21,6 @@ function expandShown(board, i, j) {
             }
         }
     } else {
-        console.log('should expand only this');
         showCell(board, i, j);
     }
 }
