@@ -19,7 +19,6 @@ function cellClicked(elCell, i, j) {
     var cell = gBoard[i][j];
 
     if (!cell.isMine) {
-        // debugger
         cell.isShown = true;
         elCell.innerText = cell.minesAroundCount;
     }
