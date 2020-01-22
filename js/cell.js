@@ -18,6 +18,7 @@ function disableContextMenu() {
 function cellClicked(event, elCell, i, j) {
     if (gIsFirstClick) {
         gIsFirstClick = false;
+        gGame.isOn = true;
         setMinesRandom(gBoard, i, j);
     }
 
@@ -73,6 +74,7 @@ function toggleMarkCell(elCell, i, j) {
 
     cell.isMarked = !cell.isMarked;
     elCell.innerText = cell.isMarked ? MARK_SYMBOL : EMPTY_SYMBOL;
+    gGame.markedCount = cell.isMarked ? gGame.markedCount++ : gGame.markedCount--;
 }
 
 function showAllMines(board) {

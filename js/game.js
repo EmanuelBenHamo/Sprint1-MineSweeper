@@ -1,21 +1,35 @@
 'use strict'
 
+var gLevels = createLevelsObj();
+var gGameCurLevel = gLevels.Beginner;
 var gGame;
-var gLevels;
-var gGameCurLevel;
-var gIsFirstClick = true;
-var gHintsCount = 3;
-var gHintModeOn = false;
+var gIsFirstClick;
+var gRemainHintsCount;
+var gHintModeOn;
 
 function applyLevel(levelBtn) {
+    var level = levelBtn.innerText;
 
+    switch (level) {
+        case 'Beginner':
+            gGameCurLevel = gLevels.Beginner;
+            break;
+        case 'Medium':
+            gGameCurLevel = gLevels.Medium;
+            break;
+        case 'Expert':
+            gGameCurLevel = gLevels.Expert;
+            break;
+    }
+
+    initGame();
 }
 
 function handleHint(hintBtn) {
     // todo: check if still remain hints, and update ui according to the number of remained hints
-    if (gHintsCount > 0) {
+    if (gRemainHintsCount > 0) {
         gHintModeOn = true;
-        gHintsCount--;
+        gRemainHintsCount--;
     }
 }
 
@@ -70,14 +84,8 @@ function createLevelsObj() {
 
 function initGame() {
     gHintModeOn = false;
-    gHintsCount = 3;
+    gRemainHintsCount = 3;
     gIsFirstClick = true;
-    gLevels = createLevelsObj();
-    gGameCurLevel = gLevels.Beginner;
-    createGame(gGameCurLevel);
-}
-
-function createGame(level) {
     gGame = createGameObj();
     gBoard = buildBoard(gGameCurLevel);
     renderBoard(gBoard);

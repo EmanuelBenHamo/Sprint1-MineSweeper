@@ -49,8 +49,8 @@ function expandShown(board, i, j) {
 }
 
 function showCell(board, i, j) {
-    console.log('in show cell');
     var cell = board[i][j];
+    gGame.showCount = !cell.isShown ? gGame.showCount++ : gGame.showCount;
     cell.isShown = true;
     var cellContent = cell.minesAroundCount > 0 ? cell.minesAroundCount : EMPTY_SYMBOL;
     var query = `[data-i="${i}"][data-j="${j}"]`;
