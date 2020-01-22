@@ -11,3 +11,7 @@
     height: 30px;
     width: 30px;
 }
+
+.cell-shown{
+    background-color: green;
+}

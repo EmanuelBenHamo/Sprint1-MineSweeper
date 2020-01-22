@@ -37,13 +37,16 @@ function handleLeftClick(elCell, i, j) {
     if (cell.isMine) {
         handleGameLose();
     } else if (!cell.isShown) {
-        cell.isShown = true;
-        elCell.innerText = cell.minesAroundCount;
+        // todo: show 1st level neighbors cells if not conatin mines
+        // todo-bonus: do it recursive
+        expandShown(gBoard, i, j);
         if (checkGameOver()) {
             handleGameWin();
         }
     }
 }
+
+
 
 function handleRightClick(event, elCell, i, j) {
     event.preventDefault();
@@ -53,7 +56,7 @@ function handleRightClick(event, elCell, i, j) {
         toggleMarkCell(elCell, i, j);
     }
 
-    if(checkGameOver()){
+    if (checkGameOver()) {
         handleGameWin();
     }
 }

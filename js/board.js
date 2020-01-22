@@ -7,8 +7,46 @@ var MARK_SYMBOL = '~';
 
 var gBoard;
 
-function expandShown(board, elCell, i, j) {
+function expandShown(board, i, j) {
+    if (shouldExpandAllAround(board, i, j)) {
+        console.log('should expand all around');
+        for (var iIndex = i - 1; iIndex <= i + 1; iIndex++) {
+            for (var jIndex = j - 1; jIndex <= j + 1; jIndex++) {
+                if (isValidCell(board, iIndex, jIndex)) {
+                    var curCell = board[iIndex][jIndex];
+                    if (!curCell.isShown && !curCell.isMarked) {
+                        showCell(board, iIndex, jIndex);
+                    }
+                }
+            }
+        }
+    } else {
+        console.log('should expand only this');
+        showCell(board, i, j);
+    }
+}
 
+function showCell(board, i, j) {
+    console.log('in show cell');
+    var cell = board[i][j];
+    cell.isShown = true;
+    var cellContent = cell.minesAroundCount > 0 ? cell.minesAroundCount : EMPTY_SYMBOL;
+    var query = `[data-i="${i}"][data-j="${j}"]`;
+    var elCell = document.querySelector(query);
+    elCell.innerText = cellContent;
+    elCell.classList.add('cell-shown');
+}
+
+function shouldExpandAllAround(board, i, j) {
+    for (var iIndex = i - 1; iIndex <= i + 1; iIndex++) {
+        for (var jIndex = j - 1; jIndex <= j + 1; jIndex++) {
+            if (isValidCell(board, iIndex, jIndex) && board[iIndex][jIndex].isMine) {
+                return false;
+            }
+        }
+    }
+
+    return true;
 }
 
 function renderBoard(board) {
@@ -42,29 +80,34 @@ function setMinesNegsCount(board) {
 function countMinesNegs(board, i, j) {
     var numOfMinesNegs = 0;
 
-    numOfMinesNegs += countCell(board, i - 1, j - 1);
-    numOfMinesNegs += countCell(board, i - 1, j);
-    numOfMinesNegs += countCell(board, i - 1, j + 1);
-    numOfMinesNegs += countCell(board, i, j - 1);
-    numOfMinesNegs += countCell(board, i, j + 1);
-    numOfMinesNegs += countCell(board, i + 1, j - 1);
-    numOfMinesNegs += countCell(board, i + 1, j);
-    numOfMinesNegs += countCell(board, i + 1, j + 1);
+    for (var iIndex = i - 1; iIndex <= i + 1; iIndex++) {
+        for (var jIndex = j - 1; jIndex <= j + 1; jIndex++) {
+            if (iIndex === i && jIndex === j) {
+                continue;
+            } else {
+                numOfMinesNegs += countCell(board, iIndex, jIndex);
+            }
+        }
+    }
 
     return numOfMinesNegs;
 }
 
 function countCell(board, i, j) {
-    var isValidRow = 0 <= i && i < board.length;
-    var isValidCol = 0 <= j && j < board.length;
-    var isValidCell = isValidRow && isValidCol;
-
-    if (isValidCell) {
+    if (isValidCell(board, i, j)) {
         var cell = board[i][j];
         return cell.isMine ? 1 : 0;
     } else {
         return 0;
     }
+}
+
+function isValidCell(board, i, j) {
+    var isValidRow = 0 <= i && i < board.length;
+    var isValidCol = 0 <= j && j < board.length;
+    var isValidCell = isValidRow && isValidCol;
+
+    return isValidCell;
 }
 
 function setMinesRandom(board) {
