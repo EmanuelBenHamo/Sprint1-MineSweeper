@@ -3,8 +3,12 @@
 2. add hint buttons that change dynamically - half done, need to disable used hints
 
 *** add time div that count the time from starting the game ***
+** handle game win and lose more nice **
+
 
 3. add smiley feature
 4. add nice css and design
 5. complete all bonuses
+
+
 6. REMOVE ALL COMMENTS AND TODOS

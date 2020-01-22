@@ -6,6 +6,7 @@ var gGame;
 var gIsFirstClick;
 var gRemainHintsCount;
 var gHintModeOn;
+var gGameStartTime;
 
 function applyLevel(levelBtn) {
     var level = levelBtn.innerText;
@@ -39,18 +40,18 @@ function checkGameOver() {
         for (var j = 0; j < gBoard.length; j++) {
             var curCell = gBoard[i][j];
             if (curCell.isMine && !curCell.isMarked) {
-                return false;
+                return;
             }
             if (!curCell.isMine && curCell.isMarked) {
-                return false;
+                return;
             }
             if (!curCell.isMine && !curCell.isShown) {
-                return false;
+                return;
             }
         }
     }
 
-    return true;
+    handleGameWin();
 }
 
 function handleGameWin() {

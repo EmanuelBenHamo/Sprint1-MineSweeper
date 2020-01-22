@@ -20,6 +20,7 @@ function cellClicked(event, elCell, i, j) {
         gIsFirstClick = false;
         gGame.isOn = true;
         setMinesRandom(gBoard, i, j);
+        gGameStartTime = Date.now();
     }
 
     if (event.button === 0) {
@@ -50,9 +51,7 @@ function handleLeftClick(i, j) {
         handleGameLose();
     } else if (!cell.isShown) {
         expandShown(gBoard, i, j);
-        if (checkGameOver()) {
-            handleGameWin();
-        }
+        checkGameOver();
     }
 }
 
@@ -64,9 +63,7 @@ function handleRightClick(event, elCell, i, j) {
         toggleMarkCell(elCell, i, j);
     }
 
-    if (checkGameOver()) {
-        handleGameWin();
-    }
+    checkGameOver();
 }
 
 function toggleMarkCell(elCell, i, j) {
