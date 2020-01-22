@@ -30,6 +30,7 @@ function handleHint(hintBtn) {
     if (gRemainHintsCount > 0) {
         gHintModeOn = true;
         gRemainHintsCount--;
+        // todo: change ui of pressed hint button and disable pressing on it
     }
 }
 
