@@ -16,6 +16,7 @@ function expandShown(board, i, j) {
                     var curCell = board[iIndex][jIndex];
                     if (!curCell.isShown && !curCell.isMarked) {
                         showCell(board, iIndex, jIndex);
+                        expandShown(board, iIndex, jIndex);
                     }
                 }
             }
