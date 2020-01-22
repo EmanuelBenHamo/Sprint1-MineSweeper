@@ -11,10 +11,6 @@ function createCell(minesAroundCount = 0, isShown = false, isMine = false, isMar
     return cell;
 }
 
-function cellMarked(elCell) {
-
-}
-
 function disableContextMenu() {
     event.preventDefault();
 }

@@ -8,9 +8,11 @@ var gHintsCount = 3;
 var gHintModeOn = false;
 
 function handleHint() {
-    gHintsCount--;
     // todo: check if still remain hints, and update ui according to the number of remained hints
-    gHintModeOn = true;
+    if (gHintsCount > 0) {
+        gHintModeOn = true;
+        gHintsCount--;
+    }
 }
 
 function checkGameOver() {

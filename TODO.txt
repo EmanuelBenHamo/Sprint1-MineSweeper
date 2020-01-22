@@ -1,0 +1,5 @@
+1. add level buttons - easy, hard, extreme
+2. add hint buttons that change dynamically
+3. add smiley
+4. add nice css and design
+5. complete all bonuses
