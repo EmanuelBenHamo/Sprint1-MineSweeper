@@ -1,5 +1,7 @@
 'use strict'
 
+var MINE_SYMBOL = '*';
+
 var gBoard;
 
 function expandShown(board, elCell, i, j) {
@@ -13,8 +15,9 @@ function renderBoard(board) {
         htmlStr += '<tr>'
         for (var j = 0; j < board.length; j++) {
             var curCell = board[i][j];
-            var curCellContent = curCell.isMine ? '*' : curCell.minesAroundCount;
-            htmlStr += `<td class="cell" data-i=${i} data-j=${j} data-numOfMinesNegs=${curCell.minesAroundCount} onclick=cellClicked()>${curCellContent}</td>`;
+            var curCellContent = curCell.isMine ? MINE_SYMBOL : curCell.minesAroundCount;
+            curCellContent = curCell.isShown ? curCellContent : '';
+            htmlStr += `<td class="cell" data-i="${i}" data-j="${j}" data-numOfMinesNegs="${curCell.minesAroundCount}" onclick="cellClicked(this, ${i}, ${j})">${curCellContent}</td>`;
         }
 
         htmlStr += '</tr>';
@@ -61,6 +64,32 @@ function countCell(board, i, j) {
     }
 }
 
+function setMinesRandom(board) {
+    var emptySpaces = getEmptySpaces(board);
+
+    for (var i = 0; i < gGameCurLevel.mines; i++) {
+        var curRandEmptySpacesIndex = getRandomIntInclusive(0, emptySpaces.length - 1);
+        var curRandPos = emptySpaces.splice(curRandEmptySpacesIndex, 1)[0];
+        board[curRandPos.i][curRandPos.j].isMine = true;
+        console.log(`mine-i = ${curRandPos.i} mine-j=${curRandPos.j}`);
+        
+    }
+}
+
+function getEmptySpaces(board) {
+    var emptySpaces = [];
+
+    for (var i = 0; i < board.length; i++) {
+        for (var j = 0; j < board.length; j++) {
+            if (isEmptyCell(board, i, j)) {
+                emptySpaces.push({ i: i, j: j });
+            }
+        }
+    }
+
+    return emptySpaces;
+}
+
 function buildBoard(level) {
     var board = [];
 
@@ -71,8 +100,7 @@ function buildBoard(level) {
         }
     }
 
-    board[0][0].isMine = true;
-    board[0][1].isMine = true;
+    setMinesRandom(board);
 
     return board;
 }

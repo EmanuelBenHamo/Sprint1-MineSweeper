@@ -2,6 +2,7 @@
 
 var gGame;
 var gLevels;
+var gGameCurLevel;
 
 function checkGameOver() {
 
@@ -31,7 +32,8 @@ function createLevels() {
 function initGame() {
     gGame = createGame();
     gLevels = createLevels();
-    gBoard = buildBoard(gLevels.Beginner);
+    gGameCurLevel = gLevels.Beginner;
+    gBoard = buildBoard(gGameCurLevel);
     setMinesNegsCount(gBoard);
     renderBoard(gBoard);
 }
