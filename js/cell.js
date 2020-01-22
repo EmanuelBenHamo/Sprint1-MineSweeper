@@ -15,22 +15,61 @@ function cellMarked(elCell) {
 
 }
 
-function cellClicked(elCell, i, j) {
+function disableContextMenu() {
+    event.preventDefault();
+}
+
+function cellClicked(event, elCell, i, j) {
+    if (event.button === 0) {
+        handleLeftClick(elCell, i, j);
+    } else if (event.button === 2) {
+        handleRightClick(event, elCell, i, j);
+    }
+}
+
+function handleLeftClick(elCell, i, j) {
     var cell = gBoard[i][j];
 
+    if (cell.isMarked) {
+        return;
+    }
+
     if (cell.isMine) {
-        handleGameOver();
-    } else {
+        handleGameLose();
+    } else if (!cell.isShown) {
         cell.isShown = true;
         elCell.innerText = cell.minesAroundCount;
+        if (checkGameOver()) {
+            handleGameWin();
+        }
     }
+}
+
+function handleRightClick(event, elCell, i, j) {
+    event.preventDefault();
+    var cell = gBoard[i][j];
+
+    if (!cell.isShown) {
+        toggleMarkCell(elCell, i, j);
+    }
+
+    if(checkGameOver()){
+        handleGameWin();
+    }
+}
+
+function toggleMarkCell(elCell, i, j) {
+    var cell = gBoard[i][j];
+
+    cell.isMarked = !cell.isMarked;
+    elCell.innerText = cell.isMarked ? MARK_SYMBOL : EMPTY_SYMBOL;
 }
 
 function showAllMines(board) {
     for (var i = 0; i < board.length; i++) {
         for (var j = 0; j < board.length; j++) {
             var curCell = board[i][j];
-            if (curCell.isMine && !curCell.isMarked) {
+            if (curCell.isMine) {
                 curCell.isShown = true;
                 var curQuery = `[data-i="${i}"][data-j="${j}"]`;
                 var curElCell = document.querySelector(curQuery);

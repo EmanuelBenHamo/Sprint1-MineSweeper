@@ -1,6 +1,9 @@
 'use strict'
 
+var EMPTY_SYMBOL = ' ';
 var MINE_SYMBOL = '*';
+var MARK_SYMBOL = '~';
+
 
 var gBoard;
 
@@ -16,8 +19,8 @@ function renderBoard(board) {
         for (var j = 0; j < board.length; j++) {
             var curCell = board[i][j];
             var curCellContent = curCell.isMine ? MINE_SYMBOL : curCell.minesAroundCount;
-            curCellContent = curCell.isShown ? curCellContent : '';
-            htmlStr += `<td class="cell" data-i="${i}" data-j="${j}" data-numOfMinesNegs="${curCell.minesAroundCount}" onclick="cellClicked(this, ${i}, ${j})">${curCellContent}</td>`;
+            curCellContent = curCell.isShown ? curCellContent : EMPTY_SYMBOL;
+            htmlStr += `<td class="cell" data-i="${i}" data-j="${j}" data-numOfMinesNegs="${curCell.minesAroundCount}" onmousedown="cellClicked(event, this, ${i}, ${j})" oncontextmenu="disableContextMenu()">${curCellContent}</td>`;
         }
 
         htmlStr += '</tr>';
@@ -72,7 +75,7 @@ function setMinesRandom(board) {
         var curRandPos = emptySpaces.splice(curRandEmptySpacesIndex, 1)[0];
         board[curRandPos.i][curRandPos.j].isMine = true;
         console.log(`mine-i = ${curRandPos.i} mine-j=${curRandPos.j}`);
-        
+
     }
 }
 

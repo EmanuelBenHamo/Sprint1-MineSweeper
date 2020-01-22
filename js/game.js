@@ -5,11 +5,31 @@ var gLevels;
 var gGameCurLevel;
 
 function checkGameOver() {
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard.length; j++) {
+            var curCell = gBoard[i][j];
+            if (curCell.isMine && !curCell.isMarked) {
+                return false;
+            }
+            if (!curCell.isMine && curCell.isMarked) {
+                return false;
+            }
+            if (!curCell.isMine && !curCell.isShown) {
+                return false;
+            }
+        }
+    }
 
+    return true;
 }
 
-function handleGameOver(){
+function handleGameWin(){
+    alert('win');
+}
+
+function handleGameLose() {
     showAllMines(gBoard);
+    alert('lose');
 }
 
 function createGameObj() {
