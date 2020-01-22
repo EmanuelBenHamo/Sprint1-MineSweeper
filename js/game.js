@@ -4,6 +4,14 @@ var gGame;
 var gLevels;
 var gGameCurLevel;
 var gIsFirstClick = true;
+var gHintsCount = 3;
+var gHintModeOn = false;
+
+function handleHint() {
+    gHintsCount--;
+    // todo: check if still remain hints, and update ui according to the number of remained hints
+    gHintModeOn = true;
+}
 
 function checkGameOver() {
     for (var i = 0; i < gBoard.length; i++) {
@@ -55,6 +63,8 @@ function createLevelsObj() {
 }
 
 function initGame() {
+    gHintModeOn = false;
+    gHintsCount = 3;
     gIsFirstClick = true;
     gLevels = createLevelsObj();
     gGameCurLevel = gLevels.Beginner;

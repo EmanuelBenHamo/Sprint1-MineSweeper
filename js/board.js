@@ -6,6 +6,27 @@ var MARK_SYMBOL = '~';
 
 
 var gBoard;
+var gHintTime = 1000;
+
+function showHint(i, j) {
+    for (var iIndex = i - 1; iIndex <= i + 1; iIndex++) {
+        for (var jIndex = j - 1; jIndex <= j + 1; jIndex++) {
+            if (isValidCell(gBoard, iIndex, jIndex)) {
+                showCellHint(gBoard, iIndex, jIndex);
+            }
+        }
+    }
+}
+
+function hideHint(i, j) {
+    for (var iIndex = i - 1; iIndex <= i + 1; iIndex++) {
+        for (var jIndex = j - 1; jIndex <= j + 1; jIndex++) {
+            if (isValidCell(gBoard, iIndex, jIndex)) {
+                hideCellHint(gBoard, iIndex, jIndex);
+            }
+        }
+    }
+}
 
 function expandShown(board, i, j) {
     if (shouldExpandAllAround(board, i, j)) {
@@ -34,6 +55,26 @@ function showCell(board, i, j) {
     var elCell = document.querySelector(query);
     elCell.innerText = cellContent;
     elCell.classList.add('cell-shown');
+}
+
+function showCellHint(board, i, j) {
+    var cell = board[i][j];
+    cell.isShown = true;
+    var cellContent = cell.isMine ? MINE_SYMBOL : cell.minesAroundCount;
+    var query = `[data-i="${i}"][data-j="${j}"]`;
+    var elCell = document.querySelector(query);
+    elCell.innerText = cellContent;
+    elCell.classList.add('cell-hint-on');
+}
+
+function hideCellHint(board, i, j) {
+    var cell = board[i][j];
+    cell.isShown = false;
+    var cellContent = EMPTY_SYMBOL;
+    var query = `[data-i="${i}"][data-j="${j}"]`;
+    var elCell = document.querySelector(query);
+    elCell.innerText = cellContent;
+    elCell.classList.remove('cell-hint-on');
 }
 
 function shouldExpandAllAround(board, i, j) {

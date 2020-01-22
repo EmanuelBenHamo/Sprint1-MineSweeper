@@ -26,14 +26,24 @@ function cellClicked(event, elCell, i, j) {
     }
 
     if (event.button === 0) {
-        handleLeftClick(elCell, i, j);
+        handleLeftClick(i, j);
     } else if (event.button === 2) {
         handleRightClick(event, elCell, i, j);
     }
 }
 
-function handleLeftClick(elCell, i, j) {
+function handleLeftClick(i, j) {
     var cell = gBoard[i][j];
+
+    if (gHintModeOn) {
+        showHint(i, j);
+        setTimeout(() => {
+            gHintModeOn = false;
+            hideHint(i, j);
+        }, gHintTime);
+
+        return;
+    }
 
     if (cell.isMarked) {
         return;
@@ -48,8 +58,6 @@ function handleLeftClick(elCell, i, j) {
         }
     }
 }
-
-
 
 function handleRightClick(event, elCell, i, j) {
     event.preventDefault();
