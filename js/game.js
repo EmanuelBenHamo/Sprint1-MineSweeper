@@ -32,7 +32,6 @@ function initGame() {
     gGame = createGame();
     gLevels = createLevels();
     gBoard = buildBoard(gLevels.Beginner);
+    setMinesNegsCount(gBoard);
     renderBoard(gBoard);
-
-    console.log(gBoard);
 }
