@@ -7,3 +7,4 @@
 3. add smiley feature
 4. add nice css and design
 5. complete all bonuses
+6. REMOVE ALL COMMENTS AND TODOS
