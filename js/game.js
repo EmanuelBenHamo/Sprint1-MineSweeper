@@ -7,7 +7,11 @@ var gIsFirstClick = true;
 var gHintsCount = 3;
 var gHintModeOn = false;
 
-function handleHint() {
+function applyLevel(levelBtn) {
+
+}
+
+function handleHint(hintBtn) {
     // todo: check if still remain hints, and update ui according to the number of remained hints
     if (gHintsCount > 0) {
         gHintModeOn = true;

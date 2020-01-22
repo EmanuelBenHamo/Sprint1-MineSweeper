@@ -7,7 +7,6 @@ var HAPPY_FACE = '😀';
 var SAD_FACE = '☹️';
 var SUNGLASSES_FACE = '😎';
 
-
 var gBoard;
 var gHintTime = 1000;
 

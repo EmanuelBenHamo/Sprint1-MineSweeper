@@ -1,10 +1,54 @@
-.board-table {
+.info{
+
+}
+
+.header {
+
+}
+
+.game-container{
+
+}
+
+.level-btns-container{
+
+}
+
+.level-btn{
+
+}
+
+.easy-level-btn{
+
+}
+
+.hard-level-btn{
+
+}
+
+.extreme-level-btn{
+
+}
+
+.hint-btns-container{
+
+}
+
+.hint-btn{
+
+}
+
+.game-info-container{
+
+}
+
+.time-display{
     
 }
 
-.board-table-body {
+.board-table {}
 
-}
+.board-table-body {}
 
 .cell {
     background-color: red;
@@ -12,10 +56,14 @@
     width: 30px;
 }
 
-.cell-shown{
+.cell-shown {
     background-color: green;
 }
 
-.cell-hint-on{
+.cell-hint-on {
     background-color: yellow;
+}
+
+.footer{
+    
 }
