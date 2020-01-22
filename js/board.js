@@ -109,16 +109,18 @@ function isValidCell(board, i, j) {
     return isValidCell;
 }
 
-function setMinesRandom(board) {
+function setMinesRandom(board, i, j) {
     var emptySpaces = getEmptySpaces(board);
+    emptySpaces = emptySpaces.filter(pos => pos.i !== i && pos.j !== j);
 
     for (var i = 0; i < gGameCurLevel.mines; i++) {
         var curRandEmptySpacesIndex = getRandomIntInclusive(0, emptySpaces.length - 1);
         var curRandPos = emptySpaces.splice(curRandEmptySpacesIndex, 1)[0];
         board[curRandPos.i][curRandPos.j].isMine = true;
         console.log(`mine-i = ${curRandPos.i} mine-j=${curRandPos.j}`);
-
     }
+
+    setMinesNegsCount(board);
 }
 
 function getEmptySpaces(board) {
@@ -145,9 +147,5 @@ function buildBoard(level) {
         }
     }
 
-    setMinesRandom(board);
-
     return board;
 }
-
-

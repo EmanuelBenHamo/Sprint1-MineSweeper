@@ -20,6 +20,11 @@ function disableContextMenu() {
 }
 
 function cellClicked(event, elCell, i, j) {
+    if (gIsFirstClick) {
+        gIsFirstClick = false;
+        setMinesRandom(gBoard, i, j);
+    }
+
     if (event.button === 0) {
         handleLeftClick(elCell, i, j);
     } else if (event.button === 2) {
@@ -37,8 +42,6 @@ function handleLeftClick(elCell, i, j) {
     if (cell.isMine) {
         handleGameLose();
     } else if (!cell.isShown) {
-        // todo: show 1st level neighbors cells if not conatin mines
-        // todo-bonus: do it recursive
         expandShown(gBoard, i, j);
         if (checkGameOver()) {
             handleGameWin();

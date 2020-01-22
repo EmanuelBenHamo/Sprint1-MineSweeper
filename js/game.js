@@ -3,6 +3,7 @@
 var gGame;
 var gLevels;
 var gGameCurLevel;
+var gIsFirstClick = true;
 
 function checkGameOver() {
     for (var i = 0; i < gBoard.length; i++) {
@@ -23,7 +24,7 @@ function checkGameOver() {
     return true;
 }
 
-function handleGameWin(){
+function handleGameWin() {
     alert('win');
 }
 
@@ -54,6 +55,7 @@ function createLevelsObj() {
 }
 
 function initGame() {
+    gIsFirstClick = true;
     gLevels = createLevelsObj();
     gGameCurLevel = gLevels.Beginner;
     createGame(gGameCurLevel);
@@ -62,6 +64,5 @@ function initGame() {
 function createGame(level) {
     gGame = createGameObj();
     gBoard = buildBoard(gGameCurLevel);
-    setMinesNegsCount(gBoard);
     renderBoard(gBoard);
 }
