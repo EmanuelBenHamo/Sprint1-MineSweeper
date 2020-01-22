@@ -1,7 +1,7 @@
 'use strict'
 
-gGame;
-gLevels;
+var gGame;
+var gLevels;
 
 function checkGameOver() {
 
@@ -29,5 +29,10 @@ function createLevels() {
 }
 
 function initGame() {
+    gGame = createGame();
+    gLevels = createLevels();
+    gBoard = buildBoard(gLevels.Beginner);
+    renderBoard(gBoard);
 
+    console.log(gBoard);
 }

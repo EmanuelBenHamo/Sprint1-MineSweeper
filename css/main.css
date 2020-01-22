@@ -1,0 +1,13 @@
+.board-table {
+    
+}
+
+.board-table-body {
+
+}
+
+.cell {
+    background-color: red;
+    height: 30px;
+    width: 30px;
+}

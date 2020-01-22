@@ -1,6 +1,6 @@
 'use strict'
 
-function createCell(minesArountCount, isShown, isMine, isMarked) {
+function createCell(minesArountCount = 0, isShown = true, isMine = false, isMarked = false) {
     var cell = {
         minesArountCount: minesArountCount,
         isShown: isShown,
