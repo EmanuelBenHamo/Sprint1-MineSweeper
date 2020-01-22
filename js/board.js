@@ -1,8 +1,11 @@
 'use strict'
 
 var EMPTY_SYMBOL = ' ';
-var MINE_SYMBOL = '*';
-var MARK_SYMBOL = '~';
+var MINE_SYMBOL = '💣';
+var MARK_SYMBOL = '🏴‍☠️';
+var HAPPY_FACE = '😀';
+var SAD_FACE = '☹️';
+var SUNGLASSES_FACE = '😎';
 
 
 var gBoard;
