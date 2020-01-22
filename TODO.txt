@@ -4,7 +4,7 @@
 
 *** add time div that count the time from starting the game ***
 ** handle game win and lose more nice **
-
+* make hint to work only on not revealed cells*
 
 3. add smiley feature
 4. add nice css and design
