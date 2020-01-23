@@ -126,7 +126,6 @@ function renderBoard(board) {
 
     var elTableBody = document.querySelector('.board-table-body');
     elTableBody.innerHTML = htmlStr;
-    console.log(board);
 }
 
 function setMinesNegsCount(board) {
@@ -178,7 +177,6 @@ function setMinesRandom(board, i, j) {
         var curRandEmptySpacesIndex = getRandomIntInclusive(0, emptySpaces.length - 1);
         var curRandPos = emptySpaces.splice(curRandEmptySpacesIndex, 1)[0];
         board[curRandPos.i][curRandPos.j].isMine = true;
-        console.log(`mine-i = ${curRandPos.i} mine-j=${curRandPos.j}`);
     }
 
     setMinesNegsCount(board);
