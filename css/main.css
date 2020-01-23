@@ -5,7 +5,7 @@ body {
     width: 100vw;
     margin: 0;
     align-items: center;
-    background-color: gray;
+    background-color: #313131;
 }
 
 .info {
@@ -44,7 +44,6 @@ body {
     box-sizing: border-box;
     text-align: center;
     border-radius: 100%;
-    border: 2px solid red;
     color: white;
     margin: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -60,20 +59,23 @@ body {
 .beginner-level-btn {
     width: 100px;
     height: 100px;
-    background-color: green;
+    background-color: #659B5E;
+    border: 5px solid #95BF74;
     margin-top: 80px;
 }
 
 .medium-level-btn {
     width: 110px;
     height: 110px;
-    background-color: orange;
+    background-color: #fe9801;
+    border: 5px solid #ffcc00;
 }
 
 .expert-level-btn {
     width: 120px;
     height: 120px;
-    background-color: red;
+    background-color: #f0134d;
+    border: 5px solid #ff6f5e;
 }
 
 .hint-btns-container {
@@ -90,11 +92,11 @@ body {
     box-sizing: border-box;
     border-radius: 100%;
     margin: 10px;
-    border: 2px solid red;
+    border: 5px solid #c299fc;
+    background-color: #6807f9;
     width: 100px;
     height: 100px;
     color: white;
-    background-color: blue;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-weight: bold;
@@ -148,7 +150,6 @@ body {
     max-height: 500px;
     min-width: 500px;
     min-height: 500px;
-    background-color: blue;
     margin: auto;
 }
 
@@ -158,11 +159,11 @@ body {
 
 .cell {
     box-sizing: border-box;
-    background-color: red;
+    background-color: #aaaaaa;
     height: 40px;
     width: 40px;
-    border: 2px solid purple;
-    border-radius: 3px;
+    border: 2px solid black;
+    border-radius: 5px;
     text-align: center;
     font-size: large;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -176,15 +177,16 @@ body {
 }
 
 .cell-shown {
-    background-color: green;
+    background-color: red;
 }
 
 .cell-highlight {
-    border: 3px solid blue;
+    border: 3px solid white;
+    background-color: #f30067;
 }
 
 .cell-hint-on {
-    background-color: yellow;
+    background-color: #f30067;
 }
 
 .footer {

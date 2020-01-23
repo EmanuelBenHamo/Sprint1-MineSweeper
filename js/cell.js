@@ -101,6 +101,7 @@ function showAllMines(board) {
                 var curQuery = `[data-i="${i}"][data-j="${j}"]`;
                 var curElCell = document.querySelector(curQuery);
                 curElCell.innerText = MINE_SYMBOL;
+                curElCell.classList.add('cell-shown');
             }
         }
     }
