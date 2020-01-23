@@ -17,7 +17,7 @@ function disableContextMenu() {
 
 function cellClicked(event, elCell, i, j) {
     if (gIsFirstClick) {
-        handleFirstClick();
+        handleFirstClick(i, j);
     }
 
     if (event.button === LEFT_CLICK) {
@@ -27,7 +27,7 @@ function cellClicked(event, elCell, i, j) {
     }
 }
 
-function handleFirstClick() {
+function handleFirstClick(i, j) {
     gIsFirstClick = false;
     gGame.isOn = true;
     setMinesRandom(gBoard, i, j);

@@ -104,10 +104,25 @@ function createLevelsObj() {
     return levels;
 }
 
+function enableHintBtns() {
+    gRemainHintsCount = 3;
+    var hintBtnsElments = document.querySelectorAll('.hint-btn');
+
+    for (var i = 0; i < hintBtnsElments.length; i++) {
+        hintBtnsElments[i].disabled = false;
+    }
+}
+
+function resetTimeDisplay() {
+    var elGameTime = document.querySelector('.time-display');
+    elGameTime.innerHTML = 'Game Time: 00:00';
+}
+
 function initGame() {
     clearInterval(gGameTimeInterval);
+    enableHintBtns();
+    resetTimeDisplay();
     gIsHintModeOn = false;
-    gRemainHintsCount = 3;
     gIsFirstClick = true;
     gGame = createGameObj();
     gBoard = buildBoard(gGameCurLevel);
