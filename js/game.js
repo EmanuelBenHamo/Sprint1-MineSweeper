@@ -50,6 +50,11 @@ function handleHint(hintBtn) {
         gRemainHintsCount--;
         disableHintBtn(hintBtn);
         toggleHighlightUnRevealedCells(gIsHintModeOn);
+        hintBtn.style.opacity = 0;
+        setTimeout(() => {
+            hintBtn.disabled = true;
+            hintBtn.style.display = 'none';
+        }, 1000);
     }
 }
 
