@@ -5,7 +5,8 @@ function createCell(minesAroundCount = 0, isShown = false, isMine = false, isMar
         minesAroundCount: minesAroundCount,
         isShown: isShown,
         isMine: isMine,
-        isMarked: isMarked
+        isMarked: isMarked,
+        isHint: false
     }
 
     return cell;

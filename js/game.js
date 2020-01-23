@@ -3,6 +3,10 @@
 var LEFT_CLICK = 0;
 var RIGHT_CLICK = 2;
 
+var HAPPY_FACE = '😀';
+var SAD_FACE = '☹️';
+var SUNGLASSES_FACE = '😎';
+
 var gLevels = createLevelsObj();
 var gGameCurLevel = gLevels.Beginner;
 var gGame;
@@ -41,7 +45,7 @@ function displayCurTime() {
 }
 
 function handleHint(hintBtn) {
-    if (gRemainHintsCount > 0) {
+    if (gRemainHintsCount > 0 && !gIsHintModeOn) {
         gIsHintModeOn = true;
         gRemainHintsCount--;
         disableHintBtn(hintBtn);
@@ -75,12 +79,16 @@ function checkGameOver() {
 }
 
 function handleGameWin() {
-    alert('win');
+    var elStartOverBtn = document.querySelector('.start-over-btn');
+    elStartOverBtn.innerText = SUNGLASSES_FACE;
+    clearInterval(gGameTimeInterval);
 }
 
 function handleGameLose() {
     showAllMines(gBoard);
-    alert('lose');
+    var elStartOverBtn = document.querySelector('.start-over-btn');
+    elStartOverBtn.innerText = SAD_FACE;
+    clearInterval(gGameTimeInterval);
 }
 
 function createGameObj() {
@@ -118,10 +126,16 @@ function resetTimeDisplay() {
     elGameTime.innerHTML = 'Game Time: 00:00';
 }
 
+function resetSmileyBtn() {
+    var elStartOverBtn = document.querySelector('.start-over-btn');
+    elStartOverBtn.innerText = HAPPY_FACE;
+}
+
 function initGame() {
     clearInterval(gGameTimeInterval);
     enableHintBtns();
     resetTimeDisplay();
+    resetSmileyBtn();
     gIsHintModeOn = false;
     gIsFirstClick = true;
     gGame = createGameObj();

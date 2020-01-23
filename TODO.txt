@@ -8,3 +8,5 @@
 
 add nice css and design: 
 
+bugs:
+to disable other hint btns when one is clicked(?)

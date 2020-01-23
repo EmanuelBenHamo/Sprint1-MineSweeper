@@ -3,9 +3,7 @@
 var EMPTY_SYMBOL = ' ';
 var MINE_SYMBOL = '💣';
 var MARK_SYMBOL = '🏴‍☠️';
-var HAPPY_FACE = '😀';
-var SAD_FACE = '☹️';
-var SUNGLASSES_FACE = '😎';
+
 
 var gBoard;
 var gHintTime = 1000;
@@ -31,7 +29,7 @@ function toggleHighlightUnRevealedCells(shouldHighlightCells) {
 function showHint(i, j) {
     for (var iIndex = i - 1; iIndex <= i + 1; iIndex++) {
         for (var jIndex = j - 1; jIndex <= j + 1; jIndex++) {
-            if (isValidCell(gBoard, iIndex, jIndex)) {
+            if (isValidCell(gBoard, iIndex, jIndex) && !gBoard[iIndex][jIndex].isShown) {
                 showCellHint(gBoard, iIndex, jIndex);
             }
         }
@@ -41,7 +39,7 @@ function showHint(i, j) {
 function hideHint(i, j) {
     for (var iIndex = i - 1; iIndex <= i + 1; iIndex++) {
         for (var jIndex = j - 1; jIndex <= j + 1; jIndex++) {
-            if (isValidCell(gBoard, iIndex, jIndex)) {
+            if (isValidCell(gBoard, iIndex, jIndex) && gBoard[iIndex][jIndex].isHint) {
                 hideCellHint(gBoard, iIndex, jIndex);
             }
         }
@@ -80,6 +78,7 @@ function showCell(board, i, j) {
 function showCellHint(board, i, j) {
     var cell = board[i][j];
     cell.isShown = true;
+    cell.isHint = true;
     var cellContent = cell.isMine ? MINE_SYMBOL : cell.minesAroundCount;
     var query = `[data-i="${i}"][data-j="${j}"]`;
     var elCell = document.querySelector(query);
@@ -90,6 +89,7 @@ function showCellHint(board, i, j) {
 function hideCellHint(board, i, j) {
     var cell = board[i][j];
     cell.isShown = false;
+    cell.isHint = false;
     var cellContent = EMPTY_SYMBOL;
     var query = `[data-i="${i}"][data-j="${j}"]`;
     var elCell = document.querySelector(query);

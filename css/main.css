@@ -1,48 +1,28 @@
-.info{
+.info {}
 
-}
+.header {}
 
-.header {
+.game-container {}
 
-}
+.level-btns-container {}
 
-.game-container{
+.level-btn {}
 
-}
+.easy-level-btn {}
 
-.level-btns-container{
+.hard-level-btn {}
 
-}
+.extreme-level-btn {}
 
-.level-btn{
+.hint-btns-container {}
 
-}
+.hint-btn {}
 
-.easy-level-btn{
+.game-info-container {}
 
-}
+.time-display {}
 
-.hard-level-btn{
-
-}
-
-.extreme-level-btn{
-
-}
-
-.hint-btns-container{
-
-}
-
-.hint-btn{
-
-}
-
-.game-info-container{
-
-}
-
-.time-display{
+.start-over-btn {
     
 }
 
@@ -60,7 +40,7 @@
     background-color: green;
 }
 
-.cell-highlight{
+.cell-highlight {
     border: 3px solid blue;
 }
 
@@ -68,6 +48,4 @@
     background-color: yellow;
 }
 
-.footer{
-
-}
+.footer {}
