@@ -1,8 +1,5 @@
 1. update gGame object fields during the game - need to update the time and check if marked and shown is good counting
 
-
-2. !!!!!!!!!!!!!!!!!!!!!!!!!!! add smiley feature !!!!!!!!!!!!!!!!!!!!!!!
-
 4. ???? complete all bonuses ???? 
 
 
