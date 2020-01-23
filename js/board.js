@@ -23,7 +23,6 @@ function toggleHighlightUnRevealedCells(shouldHighlightCells) {
             }
         }
     }
-
 }
 
 function showHint(i, j) {
