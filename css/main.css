@@ -119,6 +119,16 @@ body {
     background-color: blue;
 }
 
+.board-table-container {
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 500px;
+    min-width: 500px;
+    max-height: 500px;
+    min-height: 500px;
+}
+
 .board-table-body {
     box-sizing: border-box;
 }
