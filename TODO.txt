@@ -1,12 +1,10 @@
-0. update gGame object fields during the game - need to update the time and check if marked and shown is good counting
-
-** handle game win and lose more nice **
-
-3. add smiley feature
-4. add nice css and design
-5. complete all bonuses
+1. update gGame object fields during the game - need to update the time and check if marked and shown is good counting
 
 
-6. REMOVE ALL COMMENTS AND TODOS
+2. !!!!!!!!!!!!!!!!!!!!!!!!!!! add smiley feature !!!!!!!!!!!!!!!!!!!!!!!
 
-END OF FIRST DAY
+4. ???? complete all bonuses ???? 
+
+
+add nice css and design: 
+
