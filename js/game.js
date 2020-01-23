@@ -79,12 +79,14 @@ function checkGameOver() {
 }
 
 function handleGameWin() {
+    gGame.isOn = false;
     var elStartOverBtn = document.querySelector('.start-over-btn');
     elStartOverBtn.innerText = SUNGLASSES_FACE;
     clearInterval(gGameTimeInterval);
 }
 
 function handleGameLose() {
+    gGame.isOn = false;
     showAllMines(gBoard);
     var elStartOverBtn = document.querySelector('.start-over-btn');
     elStartOverBtn.innerText = SAD_FACE;

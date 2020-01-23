@@ -21,6 +21,10 @@ function cellClicked(event, elCell, i, j) {
         handleFirstClick(i, j);
     }
 
+    if (!gGame.isOn) {
+        return;
+    }
+
     if (event.button === LEFT_CLICK) {
         handleLeftClick(i, j);
     } else if (event.button === RIGHT_CLICK) {
