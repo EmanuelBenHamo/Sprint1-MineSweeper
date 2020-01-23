@@ -115,18 +115,12 @@ body {
 
 .board-table {
     box-sizing: border-box;
-    float: left;
-    background-color: blue;
-}
-
-.board-table-container {
-    justify-content: center;
-    align-items: center;
-    margin: auto;
     max-width: 500px;
-    min-width: 500px;
     max-height: 500px;
+    min-width: 500px;
     min-height: 500px;
+    background-color: blue;
+    margin: auto;
 }
 
 .board-table-body {
