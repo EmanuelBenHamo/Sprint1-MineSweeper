@@ -45,6 +45,10 @@ function displayCurTime() {
 }
 
 function handleHint(hintBtn) {
+    if (!gGame.isOn) {
+        return;
+    }
+
     if (gRemainHintsCount > 0 && !gIsHintModeOn) {
         gIsHintModeOn = true;
         gRemainHintsCount--;
@@ -59,6 +63,18 @@ function disableHintBtn(hintBtn) {
     setTimeout(() => {
         hintBtn.style.display = 'none';
     }, 1000);
+}
+
+function enableHintBtns() {
+    gRemainHintsCount = 3;
+    var hintBtnsElments = document.querySelectorAll('.hint-btn');
+
+    for (var i = 0; i < hintBtnsElments.length; i++) {
+        var curHintBtn = hintBtnsElments[i];
+        curHintBtn.disabled = false;
+        curHintBtn.style.opacity = 1;
+        curHintBtn.style.display = '';
+    }
 }
 
 function checkGameOver() {
@@ -114,18 +130,6 @@ function createLevelsObj() {
     }
 
     return levels;
-}
-
-function enableHintBtns() {
-    gRemainHintsCount = 3;
-    var hintBtnsElments = document.querySelectorAll('.hint-btn');
-
-    for (var i = 0; i < hintBtnsElments.length; i++) {
-        var curHintBtn = hintBtnsElments[i];
-        curHintBtn.disabled = false;
-        curHintBtn.style.opacity = 1;
-        curHintBtn.style.display = '';
-    }
 }
 
 function resetTimeDisplay() {
