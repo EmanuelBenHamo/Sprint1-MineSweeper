@@ -36,16 +36,18 @@ body {
     flex-direction: column;
     box-sizing: border-box;
     background-color: pink;
-    right: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
 }
 
 .level-btn {
     box-sizing: border-box;
-    margin-top: 10px;
     text-align: center;
     border-radius: 100%;
     border: 2px solid red;
     color: white;
+    margin: 10px;
 }
 
 .beginner-level-btn {
@@ -55,14 +57,14 @@ body {
 }
 
 .medium-level-btn {
-    width: 73px;
-    height: 73px;
+    width: 78px;
+    height: 78px;
     background-color: orange;
 }
 
 .expert-level-btn {
-    width: 78px;
-    height: 78px;
+    width: 88px;
+    height: 88px;
     background-color: red;
 }
 
@@ -71,13 +73,14 @@ body {
     flex-direction: column;
     box-sizing: border-box;
     background-color: pink;
-    left: 20px;
+    justify-content: center;
+    margin-right: 10px;
 }
 
 .hint-btn {
     box-sizing: border-box;
     border-radius: 100%;
-    margin-top: 10px;
+    margin: 10px;
     border: 2px solid red;
     width: 70px;
     height: 70px;
