@@ -50,18 +50,15 @@ function handleHint(hintBtn) {
         gRemainHintsCount--;
         disableHintBtn(hintBtn);
         toggleHighlightUnRevealedCells(gIsHintModeOn);
-        hintBtn.style.opacity = 0;
-        setTimeout(() => {
-            hintBtn.disabled = true;
-            hintBtn.style.display = 'none';
-        }, 1000);
     }
 }
 
 function disableHintBtn(hintBtn) {
     hintBtn.disabled = true;
-    //TODO: add css class that show that it is disabled
-
+    hintBtn.style.opacity = 0;
+    setTimeout(() => {
+        hintBtn.style.display = 'none';
+    }, 1000);
 }
 
 function checkGameOver() {
@@ -124,7 +121,10 @@ function enableHintBtns() {
     var hintBtnsElments = document.querySelectorAll('.hint-btn');
 
     for (var i = 0; i < hintBtnsElments.length; i++) {
-        hintBtnsElments[i].disabled = false;
+        var curHintBtn = hintBtnsElments[i];
+        curHintBtn.disabled = false;
+        curHintBtn.style.opacity = 1;
+        curHintBtn.style.display = '';
     }
 }
 
