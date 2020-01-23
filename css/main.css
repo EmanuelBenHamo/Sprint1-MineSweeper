@@ -1,36 +1,60 @@
-.info {}
+.info {
+    box-sizing: border-box;
+}
 
 .header {}
 
-.game-container {}
-
-.level-btns-container {}
-
-.level-btn {}
-
-.easy-level-btn {}
-
-.hard-level-btn {}
-
-.extreme-level-btn {}
-
-.hint-btns-container {}
-
-.hint-btn {}
-
-.game-info-container {}
-
-.time-display {}
-
-.start-over-btn {
-    
+.game-container {
+    box-sizing: border-box;
 }
 
-.board-table {}
+.level-btns-container {
+    box-sizing: border-box;
+}
 
-.board-table-body {}
+.level-btn {
+    box-sizing: border-box;
+}
+
+.easy-level-btn {
+}
+
+.hard-level-btn {
+}
+
+.extreme-level-btn {
+}
+
+.hint-btns-container {
+    box-sizing: border-box;
+}
+
+.hint-btn {
+    box-sizing: border-box;
+}
+
+.game-info-container {
+    box-sizing: border-box;
+}
+
+.time-display {
+    box-sizing: border-box;
+}
+
+.start-over-btn {
+    box-sizing: border-box;
+}
+
+.board-table {
+    box-sizing: border-box;
+}
+
+.board-table-body {
+    box-sizing: border-box;
+}
 
 .cell {
+    box-sizing: border-box;
     background-color: red;
     height: 30px;
     width: 30px;
