@@ -88,18 +88,18 @@ body {
     background-color: blue;
 }
 
+.game-board-container {
+    display: flex;
+    flex-direction: column;
+    /* background-color: black; */
+}
+
 .game-info-container {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     background-color: purple;
     align-items: center;
-}
-
-.game-board-container {
-    display: flex;
-    flex-direction: column;
-    /* background-color: black; */
 }
 
 .time-display {

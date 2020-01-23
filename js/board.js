@@ -47,21 +47,35 @@ function hideHint(i, j) {
 }
 
 function expandShown(board, i, j) {
-    if (shouldExpandAllAround(board, i, j)) {
+    if (isEmptyAndSafeCell(board, i, j)) {
+        showCell(board, i, j);
         for (var iIndex = i - 1; iIndex <= i + 1; iIndex++) {
             for (var jIndex = j - 1; jIndex <= j + 1; jIndex++) {
-                if (isValidCell(board, iIndex, jIndex)) {
-                    var curCell = board[iIndex][jIndex];
-                    if (!curCell.isShown && !curCell.isMarked) {
-                        showCell(board, iIndex, jIndex);
-                        expandShown(board, iIndex, jIndex);
-                    }
-                }
+                expandShown(board, iIndex, jIndex);
             }
         }
-    } else {
+    } else if (isValidCell(board, i, j)) {
         showCell(board, i, j);
     }
+}
+
+function isEmptyAndSafeCell(board, i, j) {
+    var isValid = isValidCell(board, i, j);
+    var curCell;
+    var isShownValid;
+    var isMineValid;
+    var isMarkedValid;
+    var isNegsValid;
+
+    if (isValid) {
+        curCell = board[i][j];
+        isShownValid = !curCell.isShown;
+        isMineValid = !curCell.isMine;
+        isMarkedValid = !curCell.isMarked;
+        isNegsValid = curCell.minesAroundCount === 0;
+    }
+
+    return isValid && isShownValid && isMineValid && isMarkedValid && isNegsValid;
 }
 
 function showCell(board, i, j) {
@@ -95,18 +109,6 @@ function hideCellHint(board, i, j) {
     var elCell = document.querySelector(query);
     elCell.innerText = cellContent;
     elCell.classList.remove('cell-hint-on');
-}
-
-function shouldExpandAllAround(board, i, j) {
-    for (var iIndex = i - 1; iIndex <= i + 1; iIndex++) {
-        for (var jIndex = j - 1; jIndex <= j + 1; jIndex++) {
-            if (isValidCell(board, iIndex, jIndex) && board[iIndex][jIndex].isMine) {
-                return false;
-            }
-        }
-    }
-
-    return true;
 }
 
 function renderBoard(board) {
