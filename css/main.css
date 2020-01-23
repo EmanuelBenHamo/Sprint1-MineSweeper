@@ -60,10 +60,14 @@
     background-color: green;
 }
 
+.cell-highlight{
+    border: 3px solid blue;
+}
+
 .cell-hint-on {
     background-color: yellow;
 }
 
 .footer{
-    
+
 }

@@ -10,6 +10,24 @@ var SUNGLASSES_FACE = '😎';
 var gBoard;
 var gHintTime = 1000;
 
+function toggleHighlightUnRevealedCells(shouldHighlightCells) {
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard.length; j++) {
+            var curCell = gBoard[i][j];
+            if (!curCell.isShown) {
+                var curQuery = `[data-i="${i}"][data-j="${j}"]`;
+                var elCell = document.querySelector(curQuery);
+                if (shouldHighlightCells) {
+                    elCell.classList.add('cell-highlight');
+                } else {
+                    elCell.classList.remove('cell-highlight');
+                }
+            }
+        }
+    }
+
+}
+
 function showHint(i, j) {
     for (var iIndex = i - 1; iIndex <= i + 1; iIndex++) {
         for (var jIndex = j - 1; jIndex <= j + 1; jIndex++) {

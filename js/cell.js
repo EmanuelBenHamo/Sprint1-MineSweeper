@@ -17,29 +17,31 @@ function disableContextMenu() {
 
 function cellClicked(event, elCell, i, j) {
     if (gIsFirstClick) {
-        gIsFirstClick = false;
-        gGame.isOn = true;
-        setMinesRandom(gBoard, i, j);
-        gGameStartTime = Date.now();
+        handleFirstClick();
     }
 
-    if (event.button === 0) {
+    if (event.button === LEFT_CLICK) {
         handleLeftClick(i, j);
-    } else if (event.button === 2) {
+    } else if (event.button === RIGHT_CLICK) {
         handleRightClick(event, elCell, i, j);
     }
+}
+
+function handleFirstClick() {
+    gIsFirstClick = false;
+    gGame.isOn = true;
+    setMinesRandom(gBoard, i, j);
+    gGameStartTime = Date.now();
+    gGameTimeInterval = setInterval(() => {
+        displayCurTime();
+    }, gGameTimeIntervalTime);
 }
 
 function handleLeftClick(i, j) {
     var cell = gBoard[i][j];
 
-    if (gHintModeOn) {
-        showHint(i, j);
-        setTimeout(() => {
-            gHintModeOn = false;
-            hideHint(i, j);
-        }, gHintTime);
-
+    if (gIsHintModeOn && !cell.isShown) {
+        displayHint(i, j);
         return;
     }
 
@@ -53,6 +55,17 @@ function handleLeftClick(i, j) {
         expandShown(gBoard, i, j);
         checkGameOver();
     }
+}
+
+function displayHint(i, j) {
+    toggleHighlightUnRevealedCells(!gIsHintModeOn);
+    showHint(i, j);
+    setTimeout(() => {
+        gIsHintModeOn = false;
+        hideHint(i, j);
+    }, gHintTime);
+
+    return;
 }
 
 function handleRightClick(event, elCell, i, j) {

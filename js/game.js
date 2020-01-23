@@ -1,12 +1,17 @@
 'use strict'
 
+var LEFT_CLICK = 0;
+var RIGHT_CLICK = 2;
+
 var gLevels = createLevelsObj();
 var gGameCurLevel = gLevels.Beginner;
 var gGame;
 var gIsFirstClick;
 var gRemainHintsCount;
-var gHintModeOn;
+var gIsHintModeOn;
 var gGameStartTime;
+var gGameTimeInterval;
+var gGameTimeIntervalTime = 90;
 
 function applyLevel(levelBtn) {
     var level = levelBtn.innerText;
@@ -26,13 +31,28 @@ function applyLevel(levelBtn) {
     initGame();
 }
 
+function displayCurTime() {
+    var curTime = Date.now();
+    var timeDiff = curTime - gGameStartTime;
+    timeDiff /= 1000;
+    var timeStr = `Game Time: ${timeDiff}`;
+    var elGameTime = document.querySelector('.time-display');
+    elGameTime.innerText = timeStr;
+}
+
 function handleHint(hintBtn) {
-    // todo: check if still remain hints, and update ui according to the number of remained hints
     if (gRemainHintsCount > 0) {
-        gHintModeOn = true;
+        gIsHintModeOn = true;
         gRemainHintsCount--;
-        // todo: change ui of pressed hint button and disable pressing on it
+        disableHintBtn(hintBtn);
+        toggleHighlightUnRevealedCells(gIsHintModeOn);
     }
+}
+
+function disableHintBtn(hintBtn) {
+    hintBtn.disabled = true;
+    //TODO: add css class that show that it is disabled
+
 }
 
 function checkGameOver() {
@@ -85,7 +105,8 @@ function createLevelsObj() {
 }
 
 function initGame() {
-    gHintModeOn = false;
+    clearInterval(gGameTimeInterval);
+    gIsHintModeOn = false;
     gRemainHintsCount = 3;
     gIsFirstClick = true;
     gGame = createGameObj();
