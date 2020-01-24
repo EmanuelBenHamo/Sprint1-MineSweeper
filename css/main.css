@@ -21,7 +21,7 @@ body {
     font-size: xx-large;
 }
 
-.game-container {
+.main-game-container {
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
@@ -38,6 +38,7 @@ body {
     align-items: center;
     margin-left: 10px;
     justify-content: space-around;
+    max-height: 500px;
 }
 
 .level-btn {
@@ -61,7 +62,6 @@ body {
     height: 100px;
     background-color: #659B5E;
     border: 5px solid #95BF74;
-    margin-top: 80px;
 }
 
 .medium-level-btn {
@@ -83,15 +83,18 @@ body {
     flex-direction: column;
     box-sizing: border-box;
     justify-content: center;
+    align-items: center;
     margin-right: 10px;
     justify-self: flex-end;
     justify-content: space-around;
+    max-height: 500px;
+    min-width: 140px;
 }
 
 .hint-btn {
     box-sizing: border-box;
     border-radius: 100%;
-    margin: 10px;
+    text-align: center;
     border: 5px solid #c299fc;
     background-color: #6807f9;
     width: 100px;
@@ -101,7 +104,6 @@ body {
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-weight: bold;
     font-size: large;
-    margin-top: 80px;
     transition: opacity 1s;
 }
 
@@ -151,6 +153,12 @@ body {
 
 .start-over-btn:hover {
     cursor: pointer;
+}
+
+.game-playing-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
 }
 
 .board-table {

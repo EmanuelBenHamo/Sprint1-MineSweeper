@@ -11,12 +11,7 @@
 
 <body onload="initGame()">
     <h2 class="info header">Mine Sweeper</h2>
-    <div class="game-container">
-        <div class="hint-btns-container">
-            <button class="hint-btn" onclick="handleHint(this)">Hint</button>
-            <button class="hint-btn" onclick="handleHint(this)">Hint</button>
-            <button class="hint-btn" onclick="handleHint(this)">Hint</button>
-        </div>
+    <div class="main-game-container">
         <div class="game-board-container">
             <div class="game-info-container">
                 <div class="game-time-container">
@@ -28,14 +23,21 @@
                 </div>
                 <div class="start-over-btn" onclick="initGame()">😀</div>
             </div>
-            <table class="board-table">
-                <tbody class="board-table-body"></tbody>
-            </table>
-        </div>
-        <div class="level-btns-container">
-            <button class="level-btn beginner-level-btn" onclick="applyLevel(this)">Beginner</button>
-            <button class="level-btn medium-level-btn" onclick="applyLevel(this)">Medium</button>
-            <button class="level-btn expert-level-btn" onclick="applyLevel(this)">Expert</button>
+            <div class="game-playing-container">
+                <div class="hint-btns-container">
+                    <button class="hint-btn" onclick="handleHint(this)">Hint</button>
+                    <button class="hint-btn" onclick="handleHint(this)">Hint</button>
+                    <button class="hint-btn" onclick="handleHint(this)">Hint</button>
+                </div>
+                <table class="board-table">
+                    <tbody class="board-table-body"></tbody>
+                </table>
+                <div class="level-btns-container">
+                    <button class="level-btn beginner-level-btn" onclick="applyLevel(this)">Beginner</button>
+                    <button class="level-btn medium-level-btn" onclick="applyLevel(this)">Medium</button>
+                    <button class="level-btn expert-level-btn" onclick="applyLevel(this)">Expert</button>
+                </div>
+            </div>
         </div>
     </div>
     <h3 class="info footer">Copyright 2020 © Emanuel Ben Hamo</h3>
