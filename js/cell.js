@@ -55,7 +55,7 @@ function handleLeftClick(i, j) {
     }
 
     if (cell.isMine) {
-        handleGameLose();
+        handleMineClicked(i, j);
     } else if (!cell.isShown) {
         expandShown(gBoard, i, j);
         checkGameOver();

@@ -125,6 +125,19 @@ function handleGameLose() {
     clearInterval(gGameTimeInterval);
 }
 
+function handleMineClicked(i, j) {
+    if (gGame.livesCount === 0) {
+        handleGameLose();
+    } else {
+        gGame.livesCount--;
+        showCell(gBoard, i, j);
+        setTimeout(() => {
+            hideMineCell(gBoard, i, j);
+        }, gHintTime);
+        console.log(`you have ${gGame.livesCount} lives more`);
+    }
+}
+
 function createGameObj() {
     var game = {
         isOn: false,

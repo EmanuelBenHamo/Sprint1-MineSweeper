@@ -79,13 +79,29 @@ function isEmptyAndSafeCell(board, i, j) {
 
 function showCell(board, i, j) {
     var cell = board[i][j];
-    gGame.showCount = !cell.isShown ? gGame.showCount++ : gGame.showCount;
+    var cellContent;
+
     cell.isShown = true;
-    var cellContent = cell.minesAroundCount > 0 ? cell.minesAroundCount : EMPTY_SYMBOL;
+    if (cell.isMine) {
+        cellContent = MINE_SYMBOL;
+    } else {
+        gGame.showCount = !cell.isShown ? gGame.showCount++ : gGame.showCount;
+        cellContent = cell.minesAroundCount > 0 ? cell.minesAroundCount : EMPTY_SYMBOL;
+    }
     var query = `[data-i="${i}"][data-j="${j}"]`;
     var elCell = document.querySelector(query);
     elCell.innerText = cellContent;
     elCell.classList.add('cell-shown');
+}
+
+function hideMineCell(board, i, j) {
+    var cell = board[i][j];
+    gGame.showCount--;
+    cell.isShown = false;
+    var query = `[data-i="${i}"][data-j="${j}"]`;
+    var elCell = document.querySelector(query);
+    elCell.innerText = EMPTY_SYMBOL;
+    elCell.classList.remove('cell-shown');
 }
 
 function showCellHint(board, i, j) {
