@@ -15,7 +15,7 @@ var gRemainHintsCount;
 var gIsHintModeOn;
 var gGameStartTime;
 var gGameTimeInterval;
-var gGameTimeIntervalTime = 90;
+var gGameTimeIntervalTime = 1000;
 
 function applyLevel(levelBtn) {
     var level = levelBtn.innerText;
@@ -37,11 +37,25 @@ function applyLevel(levelBtn) {
 
 function displayCurTime() {
     var curTime = Date.now();
-    var timeDiff = curTime - gGameStartTime;
-    timeDiff /= 1000;
-    var timeStr = `Game Time: ${timeDiff}`;
-    var elGameTime = document.querySelector('.time-display');
-    elGameTime.innerText = timeStr;
+    var milliseconds = curTime - gGameStartTime;
+    var seconds = Math.floor(milliseconds / 1000);
+    var minutes = '00';
+    var elSeconds = document.querySelector('.time-display-seconds');
+    var elMinutes = document.querySelector('.time-display-minutes');
+
+    gGame.secPassed = seconds;
+    minutes = Math.floor(seconds / 60);
+    seconds = Math.floor(seconds % 60);
+
+    var secondsStr = seconds.toString();
+    var minutesStr = minutes.toString();
+
+    minutesStr = minutes < 10 ? '0' + minutesStr : minutesStr;
+    minutesStr += ':';
+    secondsStr = seconds < 10 ? '0' + secondsStr : secondsStr;
+
+    elSeconds.innerText = secondsStr;
+    elMinutes.innerText = minutesStr;
 }
 
 function handleHint(hintBtn) {
@@ -116,7 +130,8 @@ function createGameObj() {
         isOn: false,
         showCount: 0,
         markedCount: 0,
-        secPassed: 0
+        secPassed: 0,
+        livesCount: 3
     }
 
     return game;
@@ -133,8 +148,11 @@ function createLevelsObj() {
 }
 
 function resetTimeDisplay() {
-    var elGameTime = document.querySelector('.time-display');
-    elGameTime.innerHTML = 'Game Time: 00:00';
+    var elSeconds = document.querySelector('.time-display-seconds');
+    var elMinutes = document.querySelector('.time-display-minutes');
+
+    elMinutes.innerText = '00:';
+    elSeconds.innerText = '00';
 }
 
 function resetSmileyBtn() {
