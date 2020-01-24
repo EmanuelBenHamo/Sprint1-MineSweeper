@@ -137,7 +137,6 @@ function handleMineClicked(i, j) {
         setTimeout(() => {
             hideMineCell(gBoard, i, j);
         }, gHintTime);
-        console.log(`you have ${gGame.livesCount} lives more`);
     }
 }
 
