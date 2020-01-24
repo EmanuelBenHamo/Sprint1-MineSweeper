@@ -45,7 +45,7 @@ function displayCurTime() {
 }
 
 function handleHint(hintBtn) {
-    if (!gGame.isOn) {
+    if (!gGame.isOn && !gIsFirstClick) {
         return;
     }
 
