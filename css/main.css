@@ -34,7 +34,6 @@ body {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    justify-content: center;
     align-items: center;
     margin-left: 10px;
     justify-content: space-around;
@@ -82,10 +81,7 @@ body {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    justify-content: center;
     align-items: center;
-    margin-right: 10px;
-    justify-self: flex-end;
     justify-content: space-around;
     max-height: 500px;
     min-width: 140px;
@@ -111,9 +107,10 @@ body {
     cursor: pointer;
 }
 
-.game-board-container {
+.game-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .game-info-container {
@@ -204,6 +201,14 @@ body {
 
 .cell-hint-on {
     background-color: #f30067;
+}
+
+.lives-container {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
 }
 
 .footer {
