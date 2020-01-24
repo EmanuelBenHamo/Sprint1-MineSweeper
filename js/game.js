@@ -7,6 +7,8 @@ var HAPPY_FACE = '😀';
 var SAD_FACE = '☹️';
 var SUNGLASSES_FACE = '😎';
 
+var HEART_SYMBOL = '❤️';
+
 var gLevels = createLevelsObj();
 var gGameCurLevel = gLevels.Beginner;
 var gGame;
@@ -130,6 +132,7 @@ function handleMineClicked(i, j) {
         handleGameLose();
     } else {
         gGame.livesCount--;
+        showNumOfLives(gGame.livesCount);
         showCell(gBoard, i, j);
         setTimeout(() => {
             hideMineCell(gBoard, i, j);
@@ -173,11 +176,27 @@ function resetSmileyBtn() {
     elStartOverBtn.innerText = HAPPY_FACE;
 }
 
+function resetLives() {
+    showNumOfLives(3);
+}
+
+function showNumOfLives(numOfLives) {
+    var elLives = document.querySelector('.lives');
+    var livesStr = '';
+
+    for (var i = 0; i < numOfLives; i++) {
+        livesStr += HEART_SYMBOL;
+    }
+
+    elLives.innerText = livesStr;
+}
+
 function initGame() {
     clearInterval(gGameTimeInterval);
     enableHintBtns();
     resetTimeDisplay();
     resetSmileyBtn();
+    resetLives();
     gIsHintModeOn = false;
     gIsFirstClick = true;
     gGame = createGameObj();

@@ -179,10 +179,10 @@ body {
     border: 2px solid black;
     border-radius: 5px;
     text-align: center;
-    font-size: large;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     color: white;
+    font-size: large;
     font-weight: bolder;
 }
 
@@ -205,10 +205,31 @@ body {
 
 .lives-container {
     display: flex;
-    flex-direction: column;
-    width: 100px;
-    height: 100px;
-    background-color: yellow;
+    flex-direction: row;
+    width: 150px;
+    height: 50px;
+    margin-top: 20px;
+    background-color: #f67280;
+    border-radius: 30px;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: large;
+}
+
+.lives-text {
+    display: flex;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-weight: bolder;
+}
+
+.lives {
+    width: 80px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer {
