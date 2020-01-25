@@ -179,16 +179,17 @@ function handleGameWin() {
     var elStartOverBtn = document.querySelector('.start-over-btn');
     elStartOverBtn.innerText = SUNGLASSES_FACE;
     clearInterval(gGameTimeInterval);
-    var bestScore = localStorage.getItem('best-score');
+    var bestScoreKey = `best-score-${gGameCurLevel.name}`
+    var bestScore = localStorage.getItem(bestScoreKey);
 
     if (!bestScore || gGame.secPassed < bestScore) {
         bestScore = gGame.secPassed;
-        localStorage.setItem('best-score', bestScore);
+        localStorage.setItem(bestScoreKey, bestScore);
         displayBestTime(bestScore);
     }
 }
 
-function displayBestTime(bestScore = localStorage.getItem('best-score')) {
+function displayBestTime(bestScore = localStorage.getItem(`best-score-${gGameCurLevel.name}`)) {
     var bestTimeStr = `Best Time: ${getMinutesStr(bestScore)}:${getSecondsStr(bestScore)}`
     var elBestTime = document.querySelector('.best-time');
     elBestTime.innerText = bestTimeStr;
@@ -231,9 +232,9 @@ function createGameObj() {
 
 function createLevelsObj() {
     var levels = {
-        Beginner: { size: 4, mines: 2 },
-        Medium: { size: 8, mines: 12 },
-        Expert: { size: 12, mines: 30 }
+        Beginner: { name: 'beginner', size: 4, mines: 2 },
+        Medium: { name: 'medium', size: 8, mines: 12 },
+        Expert: { name: 'expert', size: 12, mines: 30 }
     }
 
     return levels;
