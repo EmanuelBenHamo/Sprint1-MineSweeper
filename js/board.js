@@ -62,13 +62,15 @@ function toggleHighlightUnRevealedCells(shouldHighlightCells) {
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard.length; j++) {
             var curCell = gBoard[i][j];
-            if (!curCell.isShown) {
+            if (!curCell.isShown && !curCell.isMarked) {
                 var curQuery = `[data-i="${i}"][data-j="${j}"]`;
                 var elCell = document.querySelector(curQuery);
                 if (shouldHighlightCells) {
                     elCell.classList.add('cell-highlight');
+                    elCell.innerText = HINT_SIMBOL;
                 } else {
                     elCell.classList.remove('cell-highlight');
+                    elCell.innerText = EMPTY_SYMBOL;
                 }
             }
         }
