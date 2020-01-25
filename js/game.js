@@ -38,7 +38,7 @@ function handleSafeClick(safeClickBtn) {
 }
 
 function showNUmOfShields() {
-    var elShields = document.querySelector('.shields');
+    var elShields = document.querySelector('.safe-clicks');
     var shieldsStr = '';
 
     for (var i = 0; i < gGame.safeClicskCount; i++) {
