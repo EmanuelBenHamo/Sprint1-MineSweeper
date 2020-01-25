@@ -84,18 +84,17 @@ function applyLevel(levelBtn) {
 function displayCurTime() {
     var curTime = Date.now();
     var milliseconds = curTime - gGameStartTime;
-    
+
     var seconds = Math.floor(milliseconds / 1000);
     gGame.secPassed = seconds;
-    
+
     var elSeconds = document.querySelector('.time-display-seconds');
     var elMinutes = document.querySelector('.time-display-minutes');
-    elSeconds.innerText = getSecondsStr(milliseconds);
-    elMinutes.innerText = getMinutesStr(milliseconds);
+    elSeconds.innerText = getSecondsStr(seconds);
+    elMinutes.innerText = `${getMinutesStr(seconds)}:`;
 }
 
-function getSecondsStr(milliseconds) {
-    var seconds = Math.floor(milliseconds / 1000);
+function getSecondsStr(seconds) {
     seconds = Math.floor(seconds % 60);
     var secondsStr = seconds.toString()
     secondsStr = seconds < 10 ? '0' + secondsStr : secondsStr;
@@ -103,12 +102,10 @@ function getSecondsStr(milliseconds) {
     return secondsStr;
 }
 
-function getMinutesStr(milliseconds) {
-    var seconds = Math.floor(milliseconds / 1000);
+function getMinutesStr(seconds) {
     var minutes = Math.floor(seconds / 60);
     var minutesStr = minutes.toString();
     minutesStr = minutes < 10 ? '0' + minutesStr : minutesStr;
-    minutesStr += ':';
 
     return minutesStr;
 }
@@ -182,6 +179,19 @@ function handleGameWin() {
     var elStartOverBtn = document.querySelector('.start-over-btn');
     elStartOverBtn.innerText = SUNGLASSES_FACE;
     clearInterval(gGameTimeInterval);
+    var bestScore = localStorage.getItem('best-score');
+
+    if (!bestScore || gGame.secPassed < bestScore) {
+        bestScore = gGame.secPassed;
+        localStorage.setItem('best-score', bestScore);
+        displayBestTime(bestScore);
+    }
+}
+
+function displayBestTime(bestScore = localStorage.getItem('best-score')) {
+    var bestTimeStr = `Best Time: ${getMinutesStr(bestScore)}:${getSecondsStr(bestScore)}`
+    var elBestTime = document.querySelector('.best-time');
+    elBestTime.innerText = bestTimeStr;
 }
 
 function handleGameLose() {
@@ -235,6 +245,7 @@ function resetTimeDisplay() {
 
     elMinutes.innerText = '00:';
     elSeconds.innerText = '00';
+    displayBestTime();
 }
 
 function resetSmileyBtn() {
