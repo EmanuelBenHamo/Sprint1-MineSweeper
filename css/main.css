@@ -37,7 +37,8 @@ body {
     align-items: center;
     margin-left: 10px;
     justify-content: space-around;
-    max-height: 500px;
+    max-height: 650px;
+    min-height: 650px;
 }
 
 .level-btn {
@@ -83,8 +84,14 @@ body {
     box-sizing: border-box;
     align-items: center;
     justify-content: space-around;
-    max-height: 500px;
+    max-height: 650px;
+    min-height: 650px;
     min-width: 140px;
+}
+
+.safe-click-btn-container {
+    width: 100px;
+    height: 100px;
 }
 
 .safe-click-btn {
@@ -105,6 +112,11 @@ body {
 
 .safe-click-btn:hover {
     cursor: pointer;
+}
+
+.hint-btn-container {
+    width: 100px;
+    height: 100px;
 }
 
 .hint-btn {
