@@ -223,7 +223,7 @@ body {
 }
 
 .cell-shown {
-    background-color: red;
+    background-color: #fd5e53;
 }
 
 .cell-highlight {
@@ -247,7 +247,7 @@ body {
     justify-content: space-evenly;
     align-items: center;
     margin-top: 20px;
-    width: 540px;
+    width: 650px;
     text-align: center;
 }
 
