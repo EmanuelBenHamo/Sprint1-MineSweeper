@@ -9,6 +9,7 @@ var SUNGLASSES_FACE = '😎';
 
 var LIFE_SYMBOL = '❤️';
 var HINT_SIMBOL = '💡';
+var SAFE_CLICK_SYMBOL = '🛡️';
 
 var gLevels = createLevelsObj();
 var gGameCurLevel = gLevels.Beginner;

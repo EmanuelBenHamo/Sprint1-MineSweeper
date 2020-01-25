@@ -210,13 +210,13 @@ body {
     align-items: center;
     margin-top: 20px;
     width: 500px;
-    background-color: green;
+    text-align: center;
 }
 
 .hints-container {
     display: flex;
     flex-direction: row;
-    width: 150px;
+    width: 160px;
     height: 40px;
     background-color: #ffbe00;
     border-radius: 30px;
@@ -244,7 +244,7 @@ body {
 .lives-container {
     display: flex;
     flex-direction: row;
-    width: 150px;
+    width: 160px;
     height: 40px;
     background-color: #f67280;
     border-radius: 30px;
@@ -263,6 +263,34 @@ body {
 }
 
 .lives {
+    width: 80px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.shields-container {
+    display: flex;
+    flex-direction: row;
+    width: 160px;
+    height: 40px;
+    background-color: #8cba51;
+    border-radius: 30px;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: large;
+}
+
+.shields-text {
+    display: flex;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-weight: bolder;
+}
+
+.shields {
     width: 80px;
     text-align: center;
     justify-content: center;
