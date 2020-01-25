@@ -2,10 +2,6 @@
 
 2. complete all bonuses
 
-add css classes: cell-small, cell-medium, cell-large - for each one of the levels, and change the text size in it
-
-instead of three hint btns, make just one with a bar of hints like the bar of the lives, and when no more hints left, disappear the hint btn.
-
 add safe click btn instead one of the hint btns, also add safe click bar like the lives bar.
 
 add dark/light mode btn instead one of the hint btns, that will change it's color and also the background color.

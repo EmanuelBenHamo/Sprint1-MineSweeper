@@ -13,7 +13,7 @@
     <h2 class="info header">Mine Sweeper</h2>
     <div class="main-game-container">
         <div class="game-container">
-            <div class="game-info-container">
+            <div class="game-top-info-container">
                 <div class="game-time-container">
                     <div class="time-display-text">Game Time:</div>
                     <div class="time-elapsed-container">
@@ -26,8 +26,6 @@
             <div class="game-playing-container">
                 <div class="hint-btns-container">
                     <button class="hint-btn" onclick="handleHint(this)">Hint</button>
-                    <button class="hint-btn" onclick="handleHint(this)">Hint</button>
-                    <button class="hint-btn" onclick="handleHint(this)">Hint</button>
                 </div>
                 <table class="board-table">
                     <tbody class="board-table-body"></tbody>
@@ -38,9 +36,15 @@
                     <button class="level-btn expert-level-btn" onclick="applyLevel(this)">Expert</button>
                 </div>
             </div>
-            <div class="lives-container">
-                <div class="lives-text">Lives:</div>
-                <div class="lives">❤️❤️❤️</div>
+            <div class="game-bottom-info-container">
+                <div class="hints-container">
+                    <div class="hints-text">Hints:</div>
+                    <div class="hints">💡💡💡</div>
+                </div>
+                <div class="lives-container">
+                    <div class="lives-text">Lives:</div>
+                    <div class="lives">❤️❤️❤️</div>
+                </div>
             </div>
         </div>
     </div>

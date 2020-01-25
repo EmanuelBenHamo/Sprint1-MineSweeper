@@ -7,7 +7,8 @@ var HAPPY_FACE = '😀';
 var SAD_FACE = '☹️';
 var SUNGLASSES_FACE = '😎';
 
-var HEART_SYMBOL = '❤️';
+var LIFE_SYMBOL = '❤️';
+var HINT_SIMBOL = '💡';
 
 var gLevels = createLevelsObj();
 var gGameCurLevel = gLevels.Beginner;
@@ -68,9 +69,23 @@ function handleHint(hintBtn) {
     if (gRemainHintsCount > 0 && !gIsHintModeOn) {
         gIsHintModeOn = true;
         gRemainHintsCount--;
-        disableHintBtn(hintBtn);
+        showNumOfHints();
+        if (gRemainHintsCount === 0) {
+            disableHintBtn(hintBtn);
+        }
         toggleHighlightUnRevealedCells(gIsHintModeOn);
     }
+}
+
+function showNumOfHints() {
+    var elHints = document.querySelector('.hints');
+    var hintsStr = '';
+
+    for (var i = 0; i < gRemainHintsCount; i++) {
+        hintsStr += HINT_SIMBOL;
+    }
+
+    elHints.innerText = hintsStr;
 }
 
 function disableHintBtn(hintBtn) {
@@ -81,16 +96,15 @@ function disableHintBtn(hintBtn) {
     }, 1000);
 }
 
-function enableHintBtns() {
+function enableHintBtn() {
+    var elHintBtn = document.querySelector('.hint-btn');
+    
+    elHintBtn.disabled = false;
+    elHintBtn.style.opacity = 1;
+    elHintBtn.style.display = '';
+    
     gRemainHintsCount = 3;
-    var hintBtnsElments = document.querySelectorAll('.hint-btn');
-
-    for (var i = 0; i < hintBtnsElments.length; i++) {
-        var curHintBtn = hintBtnsElments[i];
-        curHintBtn.disabled = false;
-        curHintBtn.style.opacity = 1;
-        curHintBtn.style.display = '';
-    }
+    showNumOfHints();
 }
 
 function checkGameOver() {
@@ -175,30 +189,26 @@ function resetSmileyBtn() {
     elStartOverBtn.innerText = HAPPY_FACE;
 }
 
-function resetLives() {
-    showNumOfLives(3);
-}
-
-function showNumOfLives(numOfLives) {
+function showNumOfLives() {
     var elLives = document.querySelector('.lives');
     var livesStr = '';
 
-    for (var i = 0; i < numOfLives; i++) {
-        livesStr += HEART_SYMBOL;
+    for (var i = 0; i < gGame.livesCount; i++) {
+        livesStr += LIFE_SYMBOL;
     }
 
     elLives.innerText = livesStr;
 }
 
 function initGame() {
-    clearInterval(gGameTimeInterval);
-    enableHintBtns();
-    resetTimeDisplay();
-    resetSmileyBtn();
-    resetLives();
+    gGame = createGameObj();
     gIsHintModeOn = false;
     gIsFirstClick = true;
-    gGame = createGameObj();
+    clearInterval(gGameTimeInterval);
+    resetTimeDisplay();
+    resetSmileyBtn();
+    enableHintBtn();
+    showNumOfLives();
     gBoard = buildBoard(gGameCurLevel);
     renderBoard(gBoard);
 }
