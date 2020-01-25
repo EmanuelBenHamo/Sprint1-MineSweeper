@@ -160,7 +160,7 @@ body {
     align-items: center;
 }
 
-.game-best-time-container{
+.game-best-time-container {
     display: flex;
     flex-direction: row;
     box-sizing: border-box;

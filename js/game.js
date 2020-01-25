@@ -84,24 +84,33 @@ function applyLevel(levelBtn) {
 function displayCurTime() {
     var curTime = Date.now();
     var milliseconds = curTime - gGameStartTime;
+    
     var seconds = Math.floor(milliseconds / 1000);
-    var minutes = '00';
+    gGame.secPassed = seconds;
+    
     var elSeconds = document.querySelector('.time-display-seconds');
     var elMinutes = document.querySelector('.time-display-minutes');
+    elSeconds.innerText = getSecondsStr(milliseconds);
+    elMinutes.innerText = getMinutesStr(milliseconds);
+}
 
-    gGame.secPassed = seconds;
-    minutes = Math.floor(seconds / 60);
+function getSecondsStr(milliseconds) {
+    var seconds = Math.floor(milliseconds / 1000);
     seconds = Math.floor(seconds % 60);
-
-    var secondsStr = seconds.toString();
-    var minutesStr = minutes.toString();
-
-    minutesStr = minutes < 10 ? '0' + minutesStr : minutesStr;
-    minutesStr += ':';
+    var secondsStr = seconds.toString()
     secondsStr = seconds < 10 ? '0' + secondsStr : secondsStr;
 
-    elSeconds.innerText = secondsStr;
-    elMinutes.innerText = minutesStr;
+    return secondsStr;
+}
+
+function getMinutesStr(milliseconds) {
+    var seconds = Math.floor(milliseconds / 1000);
+    var minutes = Math.floor(seconds / 60);
+    var minutesStr = minutes.toString();
+    minutesStr = minutes < 10 ? '0' + minutesStr : minutesStr;
+    minutesStr += ':';
+
+    return minutesStr;
 }
 
 function handleHint(hintBtn) {
