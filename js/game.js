@@ -11,7 +11,7 @@ var LIFE_SYMBOL = '❤️';
 var HINT_SIMBOL = '💡';
 var SHIELD_SYMBOL = '🛡️';
 
-var LIGHT_MODE_SYMBOL = '🌞';
+var LIGHT_MODE_SYMBOL = '☀️';
 var DARK_MODE_SYMBOL = '🌙';
 
 var gLevels = createLevelsObj();
