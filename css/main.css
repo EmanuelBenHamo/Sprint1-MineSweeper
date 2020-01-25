@@ -5,7 +5,32 @@ body {
     width: 100vw;
     margin: 0;
     align-items: center;
+}
+
+.dark-mode {
     background-color: #313131;
+}
+
+.light-mode {
+    background-color: #d4d7dd;
+}
+
+.change-theme-btn {
+    font-size: x-large;
+}
+
+.change-theme-btn:hover {
+    cursor: pointer;
+}
+
+.start-over-btn {
+    box-sizing: border-box;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.start-over-btn:hover {
+    cursor: pointer;
 }
 
 .info {
@@ -198,16 +223,6 @@ body {
 .time-elapsed-container {
     display: flex;
     flex-direction: row;
-}
-
-.start-over-btn {
-    box-sizing: border-box;
-    text-align: center;
-    font-size: xx-large;
-}
-
-.start-over-btn:hover {
-    cursor: pointer;
 }
 
 .game-playing-container {

@@ -11,6 +11,9 @@ var LIFE_SYMBOL = '❤️';
 var HINT_SIMBOL = '💡';
 var SHIELD_SYMBOL = '🛡️';
 
+var LIGHT_MODE_SYMBOL = '🌞';
+var DARK_MODE_SYMBOL = '🌙';
+
 var gLevels = createLevelsObj();
 var gGameCurLevel = gLevels.Beginner;
 var gGame;
@@ -20,6 +23,20 @@ var gIsSafeModeOn;
 var gGameStartTime;
 var gGameTimeInterval;
 var gGameTimeIntervalTime = 1000;
+
+function toggleTheme(themeBtn) {
+    var elBody = document.querySelector('body');
+
+    if (themeBtn.innerText === LIGHT_MODE_SYMBOL) {
+        themeBtn.innerText = DARK_MODE_SYMBOL;
+        elBody.classList.add('light-mode');
+        elBody.classList.remove('dark-mode');
+    } else if (themeBtn.innerText === DARK_MODE_SYMBOL) {
+        themeBtn.innerText = LIGHT_MODE_SYMBOL;
+        elBody.classList.add('dark-mode');
+        elBody.classList.remove('light-mode');
+    }
+}
 
 function handleSafeClick(safeClickBtn) {
     if (!gGame.isOn && !gIsFirstClick) {

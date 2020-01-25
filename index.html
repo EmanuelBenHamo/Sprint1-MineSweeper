@@ -9,11 +9,12 @@
     <link type="text/css" rel="stylesheet" href="css/main.css">
 </head>
 
-<body onload="initGame()">
+<body class="dark-mode" onload="initGame()">
     <h2 class="info header">Mine Sweeper</h2>
     <div class="main-game-container">
         <div class="game-container">
             <div class="game-top-info-container">
+
                 <div class="start-over-btn" onclick="initGame()">😀</div>
                 <div class="game-assist-info-container">
                     <div class="hints-container">
@@ -28,6 +29,7 @@
                         <div class="lives-text">Lives |</div>
                         <div class="lives">❤️❤️❤️</div>
                     </div>
+                    <div class="change-theme-btn" onclick="toggleTheme(this)">🌞</div>
                 </div>
             </div>
             <div class="game-playing-container">
