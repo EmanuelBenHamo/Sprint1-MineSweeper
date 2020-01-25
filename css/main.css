@@ -263,7 +263,7 @@ body {
     background-color: #6807f9;
 }
 
-.game-assist-info-container {
+.game-assists-info-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -273,19 +273,18 @@ body {
     text-align: center;
 }
 
-.hints-container {
+.assist-container {
     display: flex;
     flex-direction: row;
     width: 160px;
     height: 40px;
-    background-color: #c299fc;
     border-radius: 30px;
     align-items: center;
     justify-content: space-evenly;
     font-size: large;
 }
 
-.hints-text {
+.assist-text {
     display: flex;
     box-sizing: border-box;
     color: white;
@@ -294,67 +293,24 @@ body {
     font-weight: bolder;
 }
 
-.hints {
+.assist-elements {
     width: 80px;
     text-align: center;
     justify-content: center;
     align-items: center;
+}
+
+.hints-container {
+    background-color: #c299fc;
 }
 
 .lives-container {
-    display: flex;
-    flex-direction: row;
-    width: 160px;
-    height: 40px;
     background-color: #f67280;
-    border-radius: 30px;
-    align-items: center;
-    justify-content: space-evenly;
-    font-size: large;
-}
-
-.lives-text {
-    display: flex;
-    box-sizing: border-box;
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    font-weight: bolder;
-}
-
-.lives {
-    width: 80px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
 }
 
 .safe-clicks-container {
-    display: flex;
-    flex-direction: row;
-    width: 200px;
-    height: 40px;
     background-color: #8cba51;
-    border-radius: 30px;
-    align-items: center;
-    justify-content: space-evenly;
-    font-size: large;
-}
-
-.safe-clicks-text {
-    display: flex;
-    box-sizing: border-box;
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    font-weight: bolder;
-}
-
-.safe-clicks {
-    width: 80px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+    width: 200px;
 }
 
 .footer {
