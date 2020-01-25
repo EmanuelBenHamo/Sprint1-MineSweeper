@@ -14,19 +14,21 @@
     <div class="main-game-container">
         <div class="game-container">
             <div class="game-top-info-container">
-                <div class="game-time-container">
-                    <div class="game-current-time-container">
-                        <div class="time-display-text">Game Time:</div>
-                        <div class="time-elapsed-container">
-                            <div class="time-display-minutes">00:</div>
-                            <div class="time-display-seconds">00</div>
-                        </div>
+                <div class="start-over-btn" onclick="initGame()">😀</div>
+                <div class="game-assist-info-container">
+                    <div class="hints-container">
+                        <div class="hints-text">Hints |</div>
+                        <div class="hints">💡💡💡</div>
                     </div>
-                    <div class="game-best-time-container">
-                        <div class="best-time">Best Time: 00:00</div>
+                    <div class="safe-clicks-container">
+                        <div class="safe-clicks-text">Safe Clicks |</div>
+                        <div class="safe-clicks">🛡️🛡️🛡️</div>
+                    </div>
+                    <div class="lives-container">
+                        <div class="lives-text">Lives |</div>
+                        <div class="lives">❤️❤️❤️</div>
                     </div>
                 </div>
-                <div class="start-over-btn" onclick="initGame()">😀</div>
             </div>
             <div class="game-playing-container">
                 <div class="assist-btns-container">
@@ -46,20 +48,19 @@
                     <button class="level-btn expert-level-btn" onclick="applyLevel(this)">Expert</button>
                 </div>
             </div>
-            <div class="game-bottom-info-container">
-                <div class="hints-container">
-                    <div class="hints-text">Hints |</div>
-                    <div class="hints">💡💡💡</div>
+            <div class="game-time-container">
+                <div class="game-current-time-container">
+                    <div class="time-display-text">Game Time:</div>
+                    <div class="time-elapsed-container">
+                        <div class="time-display-minutes">00:</div>
+                        <div class="time-display-seconds">00</div>
+                    </div>
                 </div>
-                <div class="safe-clicks-container">
-                    <div class="safe-clicks-text">Safe Clicks |</div>
-                    <div class="safe-clicks">🛡️🛡️🛡️</div>
-                </div>
-                <div class="lives-container">
-                    <div class="lives-text">Lives |</div>
-                    <div class="lives">❤️❤️❤️</div>
+                <div class="game-best-time-container">
+                    <div class="best-time">Best Time: 00:00</div>
                 </div>
             </div>
+
         </div>
     </div>
     <h3 class="info footer">Copyright 2020 © Emanuel Ben Hamo</h3>
