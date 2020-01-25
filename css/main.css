@@ -180,10 +180,10 @@ body {
 
 .board-table {
     box-sizing: border-box;
-    max-width: 510px;
-    max-height: 510px;
-    min-width: 510px;
-    min-height: 510px;
+    max-width: 650px;
+    max-height: 650px;
+    min-width: 650px;
+    min-height: 650px;
     margin: auto;
 }
 
@@ -194,8 +194,8 @@ body {
 .cell {
     box-sizing: border-box;
     background-color: #aaaaaa;
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     border: 2px solid black;
     border-radius: 5px;
     text-align: center;
