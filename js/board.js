@@ -8,6 +8,56 @@ var MARK_SYMBOL = '🏴‍☠️';
 var gBoard;
 var gHintTime = 1000;
 
+
+function showSafeCell() {
+    var safeCellsPositions = getSafeCellsPositions();
+    var randIndex = getRandomIntInclusive(0, safeCellsPositions.length - 1);
+    var safeCellPosition = safeCellsPositions[randIndex];
+
+    highlightSafeCell(safeCellPosition);
+}
+
+function highlightSafeCell(pos) {
+    if (!pos) {
+        gIsSafeModeOn = false;
+        return;
+    }
+
+    var cell = gBoard[pos.i][pos.j];
+
+    var curQuery = `[data-i="${pos.i}"][data-j="${pos.j}"]`;
+    var elCell = document.querySelector(curQuery);
+    elCell.classList.add('safe-cell-highlight');
+    elCell.innerHTML = SHIELD_SYMBOL;
+    setTimeout(() => {
+        elCell.classList.remove('safe-cell-highlight');
+        if (cell.isMarked) {
+            elCell.innerHTML = MARK_SYMBOL;
+        } else if (cell.isShown) {
+            elCell.innerHTML = cell.minesAroundCount;
+        } else {
+            elCell.innerHTML = EMPTY_SYMBOL;
+        }
+        gIsSafeModeOn = false;
+    }, 1000);
+}
+
+
+function getSafeCellsPositions() {
+    var safeCellsPositions = [];
+
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard.length; j++) {
+            var curCell = gBoard[i][j];
+            if (!curCell.isShown && !curCell.isMine) {
+                safeCellsPositions.push({ i: i, j: j });
+            }
+        }
+    }
+
+    return safeCellsPositions;
+}
+
 function toggleHighlightUnRevealedCells(shouldHighlightCells) {
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard.length; j++) {
@@ -28,7 +78,8 @@ function toggleHighlightUnRevealedCells(shouldHighlightCells) {
 function showHint(i, j) {
     for (var iIndex = i - 1; iIndex <= i + 1; iIndex++) {
         for (var jIndex = j - 1; jIndex <= j + 1; jIndex++) {
-            if (isValidCell(gBoard, iIndex, jIndex) && !gBoard[iIndex][jIndex].isShown) {
+            if (isValidCell(gBoard, iIndex, jIndex)
+                && !gBoard[iIndex][jIndex].isShown) {
                 showCellHint(gBoard, iIndex, jIndex);
             }
         }
@@ -119,7 +170,7 @@ function hideCellHint(board, i, j) {
     var cell = board[i][j];
     cell.isShown = false;
     cell.isHint = false;
-    var cellContent = EMPTY_SYMBOL;
+    var cellContent = cell.isMarked ? MARK_SYMBOL : EMPTY_SYMBOL;
     var query = `[data-i="${i}"][data-j="${j}"]`;
     var elCell = document.querySelector(query);
     elCell.innerText = cellContent;

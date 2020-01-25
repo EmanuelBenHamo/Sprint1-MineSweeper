@@ -9,17 +9,59 @@ var SUNGLASSES_FACE = '😎';
 
 var LIFE_SYMBOL = '❤️';
 var HINT_SIMBOL = '💡';
-var SAFE_CLICK_SYMBOL = '🛡️';
+var SHIELD_SYMBOL = '🛡️';
 
 var gLevels = createLevelsObj();
 var gGameCurLevel = gLevels.Beginner;
 var gGame;
 var gIsFirstClick;
-var gRemainHintsCount;
 var gIsHintModeOn;
+var gIsSafeModeOn;
 var gGameStartTime;
 var gGameTimeInterval;
 var gGameTimeIntervalTime = 1000;
+
+function handleSafeClick(safeClickBtn) {
+    if (!gGame.isOn && !gIsFirstClick) {
+        return;
+    }
+
+    if (gGame.safeClicskCount > 0 && !gIsSafeModeOn) {
+        gIsSafeModeOn = true;
+        gGame.safeClicskCount--;
+        showNUmOfShields();
+        showSafeCell();
+        if (gGame.safeClicskCount === 0) {
+            disableSafeClickBtn(safeClickBtn);
+        }
+    }
+}
+
+function showNUmOfShields() {
+    var elShields = document.querySelector('.shields');
+    var shieldsStr = '';
+
+    for (var i = 0; i < gGame.safeClicskCount; i++) {
+        shieldsStr += SHIELD_SYMBOL;
+    }
+
+    elShields.innerText = shieldsStr;
+}
+
+function enableSafeClicksBtn() {
+    var elSafeClickBtn = document.querySelector('.safe-click-btn');
+    elSafeClickBtn.disabled = false;
+    elSafeClickBtn.style.opacity = 1;
+    elSafeClickBtn.style.display = '';
+}
+
+function disableSafeClickBtn(safeClickBtn) {
+    safeClickBtn.disabled = true;
+    safeClickBtn.style.opacity = 0;
+    setTimeout(() => {
+        safeClickBtn.style.display = 'none';
+    }, 1000);
+}
 
 function applyLevel(levelBtn) {
     var level = levelBtn.innerText;
@@ -67,11 +109,11 @@ function handleHint(hintBtn) {
         return;
     }
 
-    if (gRemainHintsCount > 0 && !gIsHintModeOn) {
+    if (gGame.hintsCount > 0 && !gIsHintModeOn) {
         gIsHintModeOn = true;
-        gRemainHintsCount--;
+        gGame.hintsCount--;
         showNumOfHints();
-        if (gRemainHintsCount === 0) {
+        if (gGame.hintsCount === 0) {
             disableHintBtn(hintBtn);
         }
         toggleHighlightUnRevealedCells(gIsHintModeOn);
@@ -82,7 +124,7 @@ function showNumOfHints() {
     var elHints = document.querySelector('.hints');
     var hintsStr = '';
 
-    for (var i = 0; i < gRemainHintsCount; i++) {
+    for (var i = 0; i < gGame.hintsCount; i++) {
         hintsStr += HINT_SIMBOL;
     }
 
@@ -99,12 +141,11 @@ function disableHintBtn(hintBtn) {
 
 function enableHintBtn() {
     var elHintBtn = document.querySelector('.hint-btn');
-    
+
     elHintBtn.disabled = false;
     elHintBtn.style.opacity = 1;
     elHintBtn.style.display = '';
-    
-    gRemainHintsCount = 3;
+
     showNumOfHints();
 }
 
@@ -161,7 +202,9 @@ function createGameObj() {
         showCount: 0,
         markedCount: 0,
         secPassed: 0,
-        livesCount: 3
+        livesCount: 3,
+        hintsCount: 3,
+        safeClicskCount: 3
     }
 
     return game;
@@ -201,15 +244,24 @@ function showNumOfLives() {
     elLives.innerText = livesStr;
 }
 
+function resetSafeClicks() {
+    gGame.safeClicskCount = 3;
+    gIsSafeModeOn = false;
+    showNUmOfShields();
+    enableSafeClicksBtn();
+}
+
 function initGame() {
     gGame = createGameObj();
     gIsHintModeOn = false;
+    gIsSafeModeOn = false;
     gIsFirstClick = true;
     clearInterval(gGameTimeInterval);
     resetTimeDisplay();
     resetSmileyBtn();
     enableHintBtn();
     showNumOfLives();
+    resetSafeClicks();
     gBoard = buildBoard(gGameCurLevel);
     renderBoard(gBoard);
 }

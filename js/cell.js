@@ -45,18 +45,18 @@ function handleFirstClick(i, j) {
 function handleLeftClick(i, j) {
     var cell = gBoard[i][j];
 
-    if (gIsHintModeOn && !cell.isShown) {
-        displayHint(i, j);
+    if (cell.isMarked || cell.isShown) {
         return;
     }
 
-    if (cell.isMarked) {
+    if (gIsHintModeOn) {
+        displayHint(i, j);
         return;
     }
 
     if (cell.isMine) {
         handleMineClicked(i, j);
-    } else if (!cell.isShown) {
+    } else {
         expandShown(gBoard, i, j);
         checkGameOver();
     }
