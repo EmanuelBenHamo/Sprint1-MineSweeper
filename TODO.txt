@@ -2,8 +2,6 @@
 
 2. complete all bonuses
 
-add safe click btn instead one of the hint btns, also add safe click bar like the lives bar.
-
 add dark/light mode btn instead one of the hint btns, that will change it's color and also the background color.
 
 add best score div just right to the game time div.
